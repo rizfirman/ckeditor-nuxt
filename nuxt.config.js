@@ -47,7 +47,7 @@ export default {
 
     plugins: [
       // If you set ssr: true that will cause the following error. This error does not affect the operation.
-      // ERROR  [CKEditorWebpackPlugin] Error: No translation has been found for the zh language.
+      // ERROR  [CKEditorWebpackPlugin] Error: No translation has been found for the xx language.
       new CKEditorWebpackPlugin({
         // See https://ckeditor.com/docs/ckeditor5/latest/features/ui-language.html
         language: 'en',
