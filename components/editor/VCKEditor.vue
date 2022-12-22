@@ -28,6 +28,7 @@ import ImageResizeHandles from '@ckeditor/ckeditor5-image/src/imageresize/imager
 import Base64UploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/base64uploadadapter'
 import Table from '@ckeditor/ckeditor5-table/src/table'
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar'
+import TableColumnResize from '@ckeditor/ckeditor5-table/src/tablecolumnresize'
 import Indent from '@ckeditor/ckeditor5-indent/src/indent'
 import IndentBlock from '@ckeditor/ckeditor5-indent/src/indentblock'
 import TableProperties from '@ckeditor/ckeditor5-table/src/tableproperties'
@@ -85,6 +86,7 @@ export default {
           Font,
           PasteFromOffice,
           Alignment,
+          TableColumnResize,
 
           function (editor) {
           
