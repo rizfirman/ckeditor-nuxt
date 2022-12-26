@@ -1,7 +1,4 @@
 <template>
-  <!-- <div>
-    halo
-  </div> -->
   <ckeditor
     :editor="editor"
     :value="value"

@@ -2,7 +2,7 @@
   <client-only>
     <div>
       <div style="display: flex; justify-content: center">
-        <VCKEditor v-model="text" />
+        <VCKEditor v-model="text" :config="config" />
       </div>
 
       <div v-html="text"></div>
@@ -64,212 +64,35 @@
 //   ListProperties = require('@ckeditor/ckeditor5-list/src/listproperties')
 //   Alignment = require('@ckeditor/ckeditor5-alignment/src/alignment')
 // }
-
 export default {
   data() {
     return {
-      text: 'Hello World!!'
-      // editorConfig: {
-      //   plugins: [
-      //     Bold,
-      //     Italic,
-      //     Underline,
-      //     Strikethrough,
-      //     Heading,
-      //     Essentials,
-      //     ImageUpload,
-      //     ImageInsert,
-      //     AutoImage,
-      //     Image,
-      //     ImageResizeEditing,
-      //     ImageResizeHandles,
-      //     Base64UploadAdapter,
-      //     Table,
-      //     TableToolbar,
-      //     Indent,
-      //     IndentBlock,
-      //     List,
-      //     ListProperties,
-      //     TableProperties,
-      //     TableCellProperties,
-      //     Font,
-      //     PasteFromOffice,
-      //     Alignment,
-      //     TableColumnResize,
-      //     function (editor) {
+      text: 'Hello World!!',
+      config: {
+        extraPlugins: [
+          function (editor) {
           
-      //       editor.keystrokes.set('Tab', (data, cancel) => {
-      //         // indent first line of the paragraph with tab
-      //         const keyEvent = data.domEvent
-      //         console.log(keyEvent)
-      //         if (keyEvent.key === 'Tab') {
-      //           console.log('shift')
-      //           editor.model.change((writer) => {
-      //             console.log('tab')
-      //             const selection = editor.model.document.selection
-      //             const position = selection.getFirstPosition()
-      //             const text = writer.createText('\u00A0 \u00A0')
-      //             editor.model.insertContent(text, position)
-      //           })
-      //           cancel()
-      //         }
-      //       })
-      //     }
-      //   ],
-      //   toolbar: {
-      //     items: [
-      //       'heading',
-      //       '|',
-      //       'alignment',
-      //       '|',
-      //       'bold',
-      //       'italic',
-      //       'strikethrough',
-      //       'underline',
-      //       'subscript',
-      //       'superscript',
-      //       '|',
-      //       'link',
-      //       '|',
-      //       'bulletedList',
-      //       'numberedList',
-      //       'todoList',
-      //       '-', // break point
-      //       'fontfamily',
-      //       'fontsize',
-      //       'fontColor',
-      //       'fontBackgroundColor',
-      //       '|',
-      //       'code',
-      //       'codeBlock',
-      //       '|',
-      //       'insertTable',
-      //       '|',
-      //       'outdent',
-      //       'indent',
-      //       '|',
-      //       'uploadImage',
-      //       'blockQuote',
-      //     ],
-      //   },
-      //   table: {
-      //     contentToolbar: [
-      //       'tableColumn',
-      //       'tableRow',
-      //       'mergeTableCells',
-      //       'tableProperties',
-      //       'tableCellProperties',
-      //     ],
-      //   },
-      //   indentBlock: {
-      //     offset: 1,
-      //     unit: 'em',
-      //   },
-      //   language: 'en',
-      // }
+            editor.keystrokes.set('Tab', (data, cancel) => {
+              // indent first line of the paragraph with tab
+              const keyEvent = data.domEvent
+              console.log(keyEvent)
+              if (keyEvent.key === 'Tab') {
+                console.log('shift')
+                editor.model.change((writer) => {
+                  console.log('tab')
+                  const selection = editor.model.document.selection
+                  const position = selection.getFirstPosition()
+                  const text = writer.createText('\u00A0 \u00A0')
+                  editor.model.insertContent(text, position)
+                })
+                cancel()
+              }
+            })
+          }
+        ],
+        toolbar: [ 'bold', 'italic', '|', 'link' ]
+      }
     }
-  },
-  mounted() {
-    // if (process.client) {
-    //   this.editorConfig = {
-    //     plugins: [
-    //       Bold,
-    //       Italic,
-    //       Underline,
-    //       Strikethrough,
-    //       Heading,
-    //       Essentials,
-    //       ImageUpload,
-    //       ImageInsert,
-    //       AutoImage,
-    //       Image,
-    //       ImageResizeEditing,
-    //       ImageResizeHandles,
-    //       Base64UploadAdapter,
-    //       Table,
-    //       TableToolbar,
-    //       Indent,
-    //       IndentBlock,
-    //       List,
-    //       ListProperties,
-    //       TableProperties,
-    //       TableCellProperties,
-    //       Font,
-    //       PasteFromOffice,
-    //       Alignment,
-    //       TableColumnResize,
-    //       function (editor) {
-          
-    //         editor.keystrokes.set('Tab', (data, cancel) => {
-    //           // indent first line of the paragraph with tab
-    //           const keyEvent = data.domEvent
-    //           console.log(keyEvent)
-    //           if (keyEvent.key === 'Tab') {
-    //             console.log('shift')
-    //             editor.model.change((writer) => {
-    //               console.log('tab')
-    //               const selection = editor.model.document.selection
-    //               const position = selection.getFirstPosition()
-    //               const text = writer.createText('\u00A0 \u00A0')
-    //               editor.model.insertContent(text, position)
-    //             })
-    //             cancel()
-    //           }
-    //         })
-    //       }
-    //     ],
-    //     toolbar: {
-    //       items: [
-    //         'heading',
-    //         '|',
-    //         'alignment',
-    //         '|',
-    //         'bold',
-    //         'italic',
-    //         'strikethrough',
-    //         'underline',
-    //         'subscript',
-    //         'superscript',
-    //         '|',
-    //         'link',
-    //         '|',
-    //         'bulletedList',
-    //         'numberedList',
-    //         'todoList',
-    //         '-', // break point
-    //         'fontfamily',
-    //         'fontsize',
-    //         'fontColor',
-    //         'fontBackgroundColor',
-    //         '|',
-    //         'code',
-    //         'codeBlock',
-    //         '|',
-    //         'insertTable',
-    //         '|',
-    //         'outdent',
-    //         'indent',
-    //         '|',
-    //         'uploadImage',
-    //         'blockQuote',
-    //       ],
-    //     },
-    //     table: {
-    //       contentToolbar: [
-    //         'tableColumn',
-    //         'tableRow',
-    //         'mergeTableCells',
-    //         'tableProperties',
-    //         'tableCellProperties',
-    //       ],
-    //     },
-    //     indentBlock: {
-    //       offset: 1,
-    //       unit: 'em',
-    //     },
-    //     language: 'en',
-    //   }
-    // }
   }
 }
 </script>
